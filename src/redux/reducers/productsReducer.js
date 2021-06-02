@@ -1,19 +1,32 @@
-import {ActionTypes} from "../contents/action-types";
 
-// eslint-disable-next-line no-unused-vars
+import { ActionTypes } from "../constants/action-types";
 const initialState = {
-    products: [{
-        id:1,
-        title:"T-shirt",
-        category: "clothes",
-    },
+    products: [
+        {
+            id:1,
+            title: "T-shirt",
+            category: "clothes",
+        },
     ],
 };
-export const productsReducer = (state,action) => {
-    switch (action.type) {
-        case  ActionTypes.SET_PRODUCTS:
-            return state;
+
+export const productsReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_PRODUCTS:
+            return { ...state, products: payload };
         default:
             return state;
     }
-}
+};
+
+export const selectedProductsReducer = (state = {}, { type, payload }) => {
+    console.log(type);
+    switch (type) {
+        case ActionTypes.SELECTED_PRODUCT:
+            return { ...state, ...payload };
+        case ActionTypes.REMOVE_SELECTED_PRODUCT:
+            return {};
+        default:
+            return state;
+    }
+};
