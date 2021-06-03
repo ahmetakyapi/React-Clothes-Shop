@@ -21,7 +21,7 @@ const ProductDetails = () => {
     };
 
     useEffect(() => {
-        if (productId && productId !== "") fetchProductDetail(productId);
+        if (productId && productId !== "") fetchProductDetail(productId).then(r => fetchProductDetail() );
         return () => {
             dispatch(removeSelectedProducts());
         };
@@ -36,7 +36,8 @@ const ProductDetails = () => {
                         <div className="ui vertical divider">AND</div>
                         <div className="middle aligned row">
                             <div className="column lp">
-                                <img className="ui fluid image" src={image} />
+                                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+                                <img className="ui fluid image" src={image}  alt="image"/>
                             </div>
                             <div className="column rp">
                                 <h1>{title}</h1>
@@ -47,7 +48,7 @@ const ProductDetails = () => {
                                 <p>{description}</p>
                                 <div className="ui vertical animated button" tabIndex="0">
                                     <div className="hidden content">
-                                        <i className="shop icon"></i>
+                                        <i className="shop icon"/>
                                     </div>
                                     <div className="visible content">Add to Cart</div>
                                 </div>
