@@ -25,7 +25,8 @@ const ProductDetails = () => {
         return () => {
             dispatch(removeSelectedProducts());
         };
-    }, [productId]);
+    }, // eslint-disable-next-line
+     [productId]);
     return (
         <div className="ui grid container">
             {Object.keys(product).length === 0 ? (
@@ -42,7 +43,7 @@ const ProductDetails = () => {
                             <div className="column rp">
                                 <h1>{title}</h1>
                                 <h2>
-                                    <a className="ui teal tag label">${price}</a>
+                                    <div className="ui teal tag label">${price}</div>
                                 </h2>
                                 <h3 className="ui brown block header">{category}</h3>
                                 <p>{description}</p>
